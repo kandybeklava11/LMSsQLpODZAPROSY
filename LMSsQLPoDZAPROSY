@@ -1,0 +1,33 @@
+SELECT Title, Publication Year, Genre FROM Books;
+
+SELECT Author, Country FROM Authors;
+
+SELECT Title, Publication Year, Genre FROM Books WHERE Publication Year BETWEEN 2020 AND 2023;
+
+SELECT Books.Title, Authors.Author
+FROM Books
+JOIN Authors ON Books.Author ID = Authors.Author ID
+WHERE Books.Genre = Detective;
+
+SELECT Author FROM Authors WHERE Country IN (Germany, France);
+
+SELECT Books.Title, Authors.Author, Books.Publication Year, Books.Price, Books.Genre
+FROM Books
+JOIN Authors ON Books.Author ID = Authors.Author ID
+WHERE Books.Genre != Novel AND Books.Pages > 500;
+
+SELECT Authors.Author, Books.Title
+FROM Authors
+JOIN Books ON Authors.Author ID = Books.Author ID
+GROUP BY Authors.Author
+ORDER BY Books.Publication Year
+LIMIT 3;
+
+SELECT Authors.Author, Addresses.Email
+FROM Authors
+JOIN Addresses ON Authors.Address ID = Addresses.Address ID
+WHERE Addresses.Email LIKE '%.com';
+
+SELECT Country, COUNT(*) AS Number of Authors
+FROM Authors
+GROUP BY Country;
